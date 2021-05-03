@@ -19,9 +19,7 @@ namespace CodeMapExtractor
 
             extractor.UseConfiguration(config);
             extractor.SetExtractingStrategy(strategy);
-            var codeMapResult = extractor.Extract();
-
-            Console.WriteLine(JsonSerializer.Serialize((FlowCodeMap)codeMapResult));
+            extractor.ExtractToOutputFile<FlowCodeMap>();
         }
     }
 }

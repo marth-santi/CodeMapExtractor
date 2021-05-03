@@ -11,6 +11,6 @@ namespace CodeMapExtractor.Extractors
     {
         void UseConfiguration(BaseConfiguration config);
         void SetExtractingStrategy(IExtractingStrategy strategy);
-        ICodeMap Extract();
+        ICodeMap Extract<T>() where T : ICodeMap;
     }
 }

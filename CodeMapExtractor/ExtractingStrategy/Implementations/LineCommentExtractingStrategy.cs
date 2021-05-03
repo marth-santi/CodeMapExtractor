@@ -6,19 +6,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CodeMapExtractor.SemanticCriteria.CodeMapStandardCriteria;
+using CodeMapExtractor.StringOperator;
 
 namespace CodeMapExtractor.ExtractingStrategy.Implementations
 {
     public class LineCommentExtractingStrategy : IExtractingStrategy
     {
-        private const string CODEMAP_COMMENT_PREFIX = "// [";
-        private const string CODEMAP_COMMENT_NUMBER_VS_NAME_DELIMITER = "]: ";
-        private CommentCriteria _criteria;
+        private CodeMapCommentCriteria _criteria;
+        private StringHandler _handler;
         
         private Step extractStepFromQualifiedLine(string line)
         {
-            var lineParts = line.TrimStart(CODEMAP_COMMENT_PREFIX.ToCharArray())
-                                            .Split(CODEMAP_COMMENT_NUMBER_VS_NAME_DELIMITER);
+            var lineParts = _handler.SplitToParts(line);
 
             Step step = new Step();
             step.Number = int.Parse(lineParts[0]);
@@ -27,7 +27,8 @@ namespace CodeMapExtractor.ExtractingStrategy.Implementations
         }
         public LineCommentExtractingStrategy()
         {
-            _criteria = SemanticCriteriaFactory.GetCommentCriteria();
+            _criteria = CodeMapStandardCriteriaFactory.GetCodeMapCommentCriteria();
+            _handler = StringHandler.FromSemanticCriteria(_criteria);
         }
         public ICodeMap StartExtract(string sourceCode)
         {

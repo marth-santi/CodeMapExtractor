@@ -8,9 +8,9 @@ namespace CodeMapExtractor.Extensions
 {
     public static class StringExtensions
     {
-        public static bool IsQualifiedFor(this string codeline, BaseCriteria criteria)
+        public static bool IsQualifiedFor(this string code, BaseCriteria criteria)
         {
-            if (criteria.SuccessfullyCheck(codeline))
+            if (criteria.SuccessfullyCheck(code))
                 return true;
 
             return false;
