@@ -30,7 +30,7 @@ namespace CodeMapExtractor.Extractors.Implementations
         public void ExtractToOutputFile<CodeMapType>() where CodeMapType : ICodeMap
         {
             var codeMapJson = JsonSerializer.Serialize((CodeMapType)Extract<CodeMapType>());
-            using (var fileStream = File.OpenWrite("F:/mockfile.json"))
+            using (var fileStream = File.OpenWrite(_config.OutputPath))
             {
                 Byte[] info =
                     new UTF8Encoding(true).GetBytes(codeMapJson);

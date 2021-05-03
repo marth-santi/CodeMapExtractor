@@ -16,6 +16,8 @@ namespace CodeMapExtractor.Configuration
         public StandardConfiguration()
         {
             FileType = "cs";
+            // Mock
+            OutputPath = "F:/mockfile.json";
         }
     }
 }
