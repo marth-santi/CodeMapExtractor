@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CodeMapExtractor": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\vinhd\\Downloads\\Program.cs"
+    }
+  }
+}
